@@ -1,0 +1,5 @@
+bin
+lib
+pyvenv.cfg
+credentials.json
+.python-version
