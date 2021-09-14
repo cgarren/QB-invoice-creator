@@ -117,6 +117,7 @@ def create_invoice(customer_id, customer_name, customer_email, item_id, item_nam
 		"SyncToken": create_res["Invoice"]["SyncToken"],
 		"sparse": True,
 		"DueDate": due_date,
+		"DocNumber": create_res["Invoice"]["Id"],
 		"Id": create_res["Invoice"]["Id"],
 		"AllowOnlineCreditCardPayment": card_on,
 		"AllowOnlineACHPayment": bank_on,
@@ -125,7 +126,7 @@ def create_invoice(customer_id, customer_name, customer_email, item_id, item_nam
 		}
 	}
 	update_res = post_request('https://quickbooks.api.intuit.com/v3/company/193514578775999/invoice', json.dumps(update_params), "prod").text
-	return update_res
+	return json.loads(update_res)
 
 def query_customer(email_address):
 	params = {"query": "select * from Customer Where PrimaryEmailAddr = '" + email_address + "'"}
@@ -162,6 +163,8 @@ dues_nonres_card_id = query_line_item(dues_nonres_card)
 dues_nonres_check_id = query_line_item(dues_nonres_check)
 
 print("Creating invoices...")
+invoice_list = []
+i=0
 for bro in bro_data:
 	email_address = bro[email_header_string]
 	query_results = query_customer(email_address)
@@ -197,11 +200,20 @@ for bro in bro_data:
 		raise Exception('There was an issue parsing the following record: ' + customer_name)
 	print(customer_name)
 	print(" >", line_item['QueryResponse']['Item'][0]["Name"])
+	print(" >", "$" + str(line_item['QueryResponse']['Item'][0]["UnitPrice"]))
 	#print("->", "Bank:", bank_on)
 	#print("->", "Card:", card_on)
 	#print(line_item)
 	# if customer_name == "Cooper Garren":
 	res = create_invoice(customer_id, customer_name, customer_email, line_item['QueryResponse']['Item'][0]["Id"], line_item['QueryResponse']['Item'][0]["Name"], line_item['QueryResponse']['Item'][0]["UnitPrice"], line_item['QueryResponse']['Item'][0]["UnitPrice"], 1, line_item['QueryResponse']['Item'][0]["Description"], card_on, bank_on, due_date)
+	invoice_list.append(res["Invoice"]["Id"])
 	print("\033[92m >", "Invoice created\033[0m")
+	
+print("\033[95m" + str(len(bro_data)), "invoices created\033[0m")
 
-print("\033[95m", len(bro_data), "invoices created\033[0m")
+print("Writing invoice id's to file...")
+with open('./invoices.txt', 'w') as file:
+	for invoice_id in invoice_list:
+		file.write(str(invoice_id) + "\n")
+
+print("Done")
