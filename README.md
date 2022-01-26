@@ -10,7 +10,7 @@ To use this utility:
 3. Gather a csv file of the invoices you would like created (Must have at least three columns, look at example.csv for reference)
 4. Change the config variables at the top of script.py to your liking in accordance with your csv
 5. If you don't already have an app at https://developer.intuit.com/app/developer/dashboard, create one
-6. Get a refreshed API token using your client ID and secret. Pretty sure QB includes an easy way of doing this but I forgot how
+6. Get a refreshed API token using your client ID and secret. Go here to generate it: https://developer.intuit.com/app/developer/playground
 7. Input your Quickbooks API credentials into a file called credentials.json (look at example_credentials.json for reference)
 8. Run the script (If you did all of the above right, you shuldn't see any errors)
 9. The script will create a new file called invoices.txt with the numbers of all invoices created, separated by newlines
