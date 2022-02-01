@@ -4,7 +4,7 @@ import pandas as pd
 import time
 
 #Path to csv
-csv_file_path = '/Users/coopergarren/Downloads/dues_data.csv'
+csv_file_path = '/PATH_TO_CSV/NAME_OF_CSV.csv'
 
 #Dues item names in QB
 dues_nonres_card = 'Dues (Non-Resident, card)'

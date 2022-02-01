@@ -1,0 +1,8 @@
+Timestamp,Email Address,First Name,Last Name,How will you pay?,Resident?
+9/6/21 20:15,test1@test.com,Alex,Amber,Bank transfer (enter account and routing numbers),TRUE
+9/6/21 20:22,test2@test.com,Bill,Bapo,Bank transfer (enter account and routing numbers),FALSE
+9/6/21 20:22,test3@test.com,Clark,Colonus,Bank transfer (enter account and routing numbers),FALSE
+9/6/21 20:22,test4@test.com,David,Dimmer,Check,TRUE
+9/6/21 20:22,test5@test.com,Ellis,Este,Credit card (3% service fee),FALSE
+9/6/21 20:22,test6@test.com,Frank,Finch,Credit card (3% service fee),TRUE
+,,,,,
