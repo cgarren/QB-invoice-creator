@@ -10,8 +10,8 @@ To use this utility:
 3. Gather a csv file of the invoices you would like created (Must have at least three columns, look at `example.csv` for reference)
 4. Change the config variables at the top of `script.py` to your liking in accordance with your csv
 5. If you don't already have an app at https://developer.intuit.com/app/developer/dashboard, create one
-6. Get a refreshed API token using your client ID and secret. Go here to generate it: https://developer.intuit.com/app/developer/playground (You need the `com.intuit.quickbooks.accounting` scope)
-<img width="408" alt="Screen Shot 2022-02-01 at 7 57 47 PM" src="https://user-images.githubusercontent.com/45152459/152076730-68c4b74d-ad0e-4618-8900-886cb28acb86.png">
+6. Get an `accessToken` using your client ID and secret. Go here to generate it: https://developer.intuit.com/app/developer/playground (You need the `com.intuit.quickbooks.accounting` scope)
+    <img width="350" alt="Screen Shot" src="https://user-images.githubusercontent.com/45152459/152077032-e6cb2151-cec9-4f84-913b-6fe7d29059f4.png">
 7. Get your Prod Company ID by going here: https://accounts.intuit.com/app/account-manager/productsBilling
 8. Input your Quickbooks API credentials into a file called credentials.json (look at `example_credentials.json` for reference)
 9. Run the script (If you did all of the above right, you shuldn't see any errors)
