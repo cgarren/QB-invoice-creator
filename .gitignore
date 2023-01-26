@@ -4,3 +4,4 @@ pyvenv.cfg
 credentials.json
 .python-version
 invoices.txt
+.DS_Store
